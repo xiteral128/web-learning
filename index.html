@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>淘宝网 - 淘！我喜欢</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- 登录模块置顶 + 锚点ID -->
+  <header class="login-bar" id="login-section">
+    <div class="container">
+      <div class="login-title">
+        <i class="fas fa-user-circle"></i> 用户登录
+      </div>
+      <div class="login-actions">
+        <a href="#login-section" class="login-link"><i class="fas fa-user"></i> 请登录</a>
+        <span class="sep">|</span>
+        <a href="#"><i class="fas fa-shopping-cart"></i> 购物车 <span class="cart-num">0</span></a>
+        <span class="sep">|</span>
+        <a href="#"><i class="fas fa-star"></i> 我的收藏</a>
+      </div>
+    </div>
+    <div class="login-form-container">
+      <div class="container">
+        <form class="login-form" id="top-login-form">
+          <div class="form-item">
+            <label for="top-username">用户名：</label>
+            <input type="text" id="top-username" placeholder="请输入用户名">
+          </div>
+          <div class="form-item">
+            <label for="top-password">密码：</label>
+            <input type="password" id="top-password" placeholder="请输入密码">
+          </div>
+          <button type="button" class="login-btn" id="top-submit-login">登录</button>
+          <span class="login-tip">未注册？<a href="#" class="register-link">立即注册</a></span>
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <!-- 原顶部导航 -->
+  <header class="top-nav">
+    <div class="container">
+      <ul class="nav-left">
+        <li><a href="#">淘宝网</a></li>
+        <li><a href="#">天猫</a></li>
+        <li><a href="#">聚划算</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- 搜索区域 -->
+  <section class="search-area">
+    <div class="container">
+      <div class="logo">
+        <img src="img/淘宝.avif" alt="淘宝logo">
+      </div>
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="网红零食 手机 女装...">
+        <button id="search-btn"><i class="fas fa-search"></i> 搜索</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 分类导航（新增分类点击标识） -->
+  <nav class="category-nav">
+    <div class="container">
+      <div class="all-category">
+        <i class="fas fa-th-list"></i> 全部商品分类
+      </div>
+      <ul class="category-list">
+        <li><a href="#" class="category-item" data-category="all">首页</a></li>
+        <li><a href="#" class="category-item" data-category="women">女装</a></li>
+        <li><a href="#" class="category-item" data-category="men">男装</a></li>
+        <li><a href="#" class="category-item" data-category="digital">数码</a></li>
+        <li><a href="#" class="category-item" data-category="homeAppliance">家电</a></li>
+        <li><a href="#" class="category-item" data-category="cosmetics">美妆</a></li>
+        <li><a href="#" class="category-item" data-category="baby">母婴</a></li>
+        <li><a href="#" class="category-item" data-category="home">家居</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 轮播图区域 -->
+  <section class="banner">
+    <div class="container">
+      <div class="banner-slider" id="banner-slider">
+        <div class="slider-item active">
+          <img src="img/轮播图1.jpg" alt="轮播图1">
+        </div>
+        <div class="slider-item">
+          <img src="img/轮播图2.jpg" alt="轮播图2">
+        </div>
+        <div class="slider-item">
+          <img src="img/轮播图3.jpg" alt="轮播图3">
+        </div>
+        <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+        <div class="slider-indicator">
+          <span class="indicator-item active" data-index="0"></span>
+          <span class="indicator-item" data-index="1"></span>
+          <span class="indicator-item" data-index="2"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 商品展示区（动态渲染容器） -->
+  <section class="goods-area">
+    <div class="container">
+      <h2 class="section-title" id="goods-title">猜你喜欢</h2>
+      <div class="goods-list" id="goods-list">
+        <!-- 商品内容由JS动态渲染 -->
+      </div>
+    </div>
+  </section>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
