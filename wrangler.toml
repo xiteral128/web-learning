@@ -1,1 +1,4 @@
-assets = { directory = "./public" }
+name = "web-learning"
+main = "index.js"
+compatibility_date = "2025-12-23"
+assets = { directory = "." }
