@@ -1,6 +1,1 @@
-name = "web-learning"
-compatibility_date = "2024-12-19"
-main = "index.js"
-
-[[assets]]
-directory = "."
+assets = { directory = "./public" }
