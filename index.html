@@ -3,120 +3,197 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>淘宝网 - 淘！我喜欢</title>
+  <title>淘宝商城 - 完整功能版</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="manifest" href="manifest.json">
 </head>
 <body>
-  <!-- 登录模块置顶 + 锚点ID -->
-  <header class="login-bar" id="login-section">
+  <!-- 顶部用户栏 -->
+  <header class="header-top">
     <div class="container">
-      <div class="login-title">
-        <i class="fas fa-user-circle"></i> 用户登录
-      </div>
-      <div class="login-actions">
-        <a href="#login-section" class="login-link"><i class="fas fa-user"></i> 请登录</a>
-        <span class="sep">|</span>
-        <a href="#"><i class="fas fa-shopping-cart"></i> 购物车 <span class="cart-num">0</span></a>
-        <span class="sep">|</span>
-        <a href="#"><i class="fas fa-star"></i> 我的收藏</a>
+      <div class="user-actions">
+        <a href="javascript:;" class="login-btn" id="show-login">请登录</a>
+        <a href="javascript:;" class="register-btn" id="show-register">免费注册</a>
+        <a href="javascript:;" class="logout-btn" id="show-logout" style="display: none;">退出登录</a>
+        <a href="javascript:;" class="cart-btn" id="show-cart">
+          <i class="fas fa-shopping-cart"></i> 购物车(<span class="cart-count">0</span>)
+        </a>
+        <a href="javascript:;" class="collect-btn" id="show-collect">
+          <i class="fas fa-star"></i> 我的收藏
+        </a>
       </div>
     </div>
-    <div class="login-form-container">
-      <div class="container">
-        <form class="login-form" id="top-login-form">
-          <div class="form-item">
-            <label for="top-username">用户名：</label>
-            <input type="text" id="top-username" placeholder="请输入用户名">
+  </header>
+
+  <!-- 登录弹窗（独立悬浮层优化） -->
+  <div class="modal login-modal" id="login-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content login-content">
+      <div class="modal-header">
+        <h3>用户登录</h3>
+        <span class="close-btn" id="close-login">&times;</span>
+      </div>
+      <div class="modal-body">
+        <form id="login-form">
+          <div class="form-group">
+            <label class="form-label">用户名</label>
+            <input type="text" id="login-username" placeholder="请输入用户名" class="form-input" required>
           </div>
-          <div class="form-item">
-            <label for="top-password">密码：</label>
-            <input type="password" id="top-password" placeholder="请输入密码">
+          <div class="form-group">
+            <label class="form-label">密码</label>
+            <input type="password" id="login-password" placeholder="请输入密码" class="form-input" required>
           </div>
-          <button type="button" class="login-btn" id="top-submit-login">登录</button>
-          <span class="login-tip">未注册？<a href="#" class="register-link">立即注册</a></span>
+          <div class="form-group code-group">
+            <label class="form-label">验证码</label>
+            <div class="code-wrap">
+              <input type="text" id="login-code" placeholder="请输入验证码" class="form-input code-input" required>
+              <span class="code-box" id="login-code-box">8888</span>
+            </div>
+          </div>
         </form>
       </div>
+      <div class="modal-footer">
+        <button type="button" id="do-login" class="modal-btn">登录</button>
+      </div>
     </div>
-  </header>
+  </div>
 
-  <!-- 原顶部导航 -->
-  <header class="top-nav">
-    <div class="container">
-      <ul class="nav-left">
-        <li><a href="#">淘宝网</a></li>
-        <li><a href="#">天猫</a></li>
-        <li><a href="#">聚划算</a></li>
-      </ul>
+  <!-- 注册弹窗（独立悬浮层优化） -->
+  <div class="modal register-modal" id="register-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content register-content">
+      <div class="modal-header">
+        <h3>用户注册</h3>
+        <span class="close-btn" id="close-register">&times;</span>
+      </div>
+      <div class="modal-body">
+        <form id="register-form">
+          <div class="form-group">
+            <label class="form-label">用户名</label>
+            <input type="text" id="reg-username" placeholder="请设置用户名" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">密码</label>
+            <input type="password" id="reg-password" placeholder="请设置密码" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">确认密码</label>
+            <input type="password" id="reg-repassword" placeholder="请再次输入密码" class="form-input" required>
+          </div>
+          <div class="form-group code-group">
+            <label class="form-label">验证码</label>
+            <div class="code-wrap">
+              <input type="text" id="reg-code" placeholder="请输入验证码" class="form-input code-input" required>
+              <span class="code-box" id="reg-code-box">6666</span>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="do-register" class="modal-btn">注册</button>
+      </div>
     </div>
-  </header>
+  </div>
 
-  <!-- 搜索区域 -->
-  <section class="search-area">
+  <!-- 导航栏 -->
+  <nav class="nav-main">
     <div class="container">
       <div class="logo">
-        <img src="img/淘宝.avif" alt="淘宝logo">
+        <img src="https://img.alicdn.com/tfs/TB1NwmBEL9TBuNjy1zbXXXpepXa-240-80.png" alt="淘宝logo">
       </div>
-      <div class="search-box">
-        <input type="text" id="search-input" placeholder="网红零食 手机 女装...">
-        <button id="search-btn"><i class="fas fa-search"></i> 搜索</button>
+      <div class="category-nav">
+        <ul>
+          <li class="active" data-cate="all">首页</li>
+          <li data-cate="women">女装</li>
+          <li data-cate="men">男装</li>
+          <li data-cate="digital">数码</li>
+          <li data-cate="home">家居</li>
+        </ul>
       </div>
-    </div>
-  </section>
-
-  <!-- 分类导航（新增分类点击标识） -->
-  <nav class="category-nav">
-    <div class="container">
-      <div class="all-category">
-        <i class="fas fa-th-list"></i> 全部商品分类
-      </div>
-      <ul class="category-list">
-        <li><a href="#" class="category-item" data-category="all">首页</a></li>
-        <li><a href="#" class="category-item" data-category="women">女装</a></li>
-        <li><a href="#" class="category-item" data-category="men">男装</a></li>
-        <li><a href="#" class="category-item" data-category="digital">数码</a></li>
-        <li><a href="#" class="category-item" data-category="homeAppliance">家电</a></li>
-        <li><a href="#" class="category-item" data-category="cosmetics">美妆</a></li>
-        <li><a href="#" class="category-item" data-category="baby">母婴</a></li>
-        <li><a href="#" class="category-item" data-category="home">家居</a></li>
-      </ul>
     </div>
   </nav>
 
-  <!-- 轮播图区域 -->
-  <section class="banner">
-    <div class="container">
-      <div class="banner-slider" id="banner-slider">
-        <div class="slider-item active">
-          <img src="img/轮播图1.jpg" alt="轮播图1">
-        </div>
-        <div class="slider-item">
-          <img src="img/轮播图2.jpg" alt="轮播图2">
-        </div>
-        <div class="slider-item">
-          <img src="img/轮播图3.jpg" alt="轮播图3">
-        </div>
-        <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-        <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
-        <div class="slider-indicator">
-          <span class="indicator-item active" data-index="0"></span>
-          <span class="indicator-item" data-index="1"></span>
-          <span class="indicator-item" data-index="2"></span>
-        </div>
+  <!-- 轮播图 -->
+  <div class="banner-slider">
+    <div class="slider-wrapper">
+      <div class="slider-item active">
+        <img src="img/轮播图6.avif" alt="轮播图1">
+      </div>
+      <div class="slider-item">
+        <img src="img/轮播图7.avif" alt="轮播图2">
+      </div>
+      <div class="slider-item">
+        <img src="img/轮播图8.avif" alt="轮播图3">
       </div>
     </div>
-  </section>
+    <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+    <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+    <div class="slider-indicator">
+      <span class="active" data-index="0"></span>
+      <span data-index="1"></span>
+      <span data-index="2"></span>
+    </div>
+  </div>
 
-  <!-- 商品展示区（动态渲染容器） -->
-  <section class="goods-area">
+  <!-- 商品展示区 -->
+  <div class="goods-section">
     <div class="container">
-      <h2 class="section-title" id="goods-title">猜你喜欢</h2>
+      <h2 class="section-title">商品列表</h2>
       <div class="goods-list" id="goods-list">
-        <!-- 商品内容由JS动态渲染 -->
+        <!-- 商品动态渲染 -->
       </div>
     </div>
-  </section>
+  </div>
+
+  <!-- 购物车弹窗 -->
+  <div class="modal" id="cart-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content cart-content">
+      <span class="close-btn" id="close-cart">&times;</span>
+      <h3>我的购物车</h3>
+      <div class="cart-empty" id="cart-empty">
+        <i class="fas fa-shopping-cart"></i>
+        <p>购物车空空如也~ 快去添加商品吧！</p>
+      </div>
+      <div class="cart-list" id="cart-list">
+        <!-- 购物车商品 -->
+      </div>
+      <div class="cart-footer" id="cart-footer">
+        <div class="total-price">合计：¥<span id="total-price">0.00</span></div>
+        <button class="checkout-btn" id="do-checkout">去结算</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 收藏弹窗 -->
+  <div class="modal" id="collect-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content cart-content">
+      <span class="close-btn" id="close-collect">&times;</span>
+      <h3>我的收藏</h3>
+      <div class="cart-empty" id="collect-empty">
+        <i class="fas fa-star"></i>
+        <p>暂无收藏商品~ 快去收藏喜欢的商品吧！</p>
+      </div>
+      <div class="cart-list" id="collect-list">
+        <!-- 收藏商品 -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 结算成功弹窗 -->
+  <div class="modal" id="success-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <span class="close-btn" id="close-success">&times;</span>
+      <div class="success-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <h3>结算成功！</h3>
+      <p>您的订单已提交，订单号：<span id="order-no">ORD20251224001</span></p>
+      <button id="back-home">返回首页</button>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
 </body>
