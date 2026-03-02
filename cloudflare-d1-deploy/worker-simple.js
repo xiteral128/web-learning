@@ -1,4 +1,4 @@
-// Cloudflare Worker with UTF-8 HTML frontend
+// Simple Cloudflare Worker with HTML frontend
 export default {
     async fetch(request, env) {
         const url = new URL(request.url);
@@ -26,7 +26,7 @@ export default {
                 frontend: 'HTML界面已集成'
             }), {
                 headers: { 
-                    'Content-Type': 'application/json; charset=utf-8',
+                    'Content-Type': 'application/json',
                     ...corsHeaders 
                 }
             });
@@ -44,7 +44,7 @@ export default {
                     source: results ? 'D1 Database' : 'Mock Data'
                 }), {
                     headers: { 
-                        'Content-Type': 'application/json; charset=utf-8',
+                        'Content-Type': 'application/json',
                         ...corsHeaders 
                     }
                 });
@@ -60,7 +60,7 @@ export default {
                     message: '数据库未初始化'
                 }), {
                     headers: { 
-                        'Content-Type': 'application/json; charset=utf-8',
+                        'Content-Type': 'application/json',
                         ...corsHeaders 
                     }
                 });
@@ -117,7 +117,7 @@ export default {
                     tables: ['products', 'categories']
                 }), {
                     headers: { 
-                        'Content-Type': 'application/json; charset=utf-8',
+                        'Content-Type': 'application/json',
                         ...corsHeaders 
                     }
                 });
@@ -130,7 +130,7 @@ export default {
                 }), {
                     status: 500,
                     headers: { 
-                        'Content-Type': 'application/json; charset=utf-8',
+                        'Content-Type': 'application/json',
                         ...corsHeaders 
                     }
                 });
@@ -147,7 +147,7 @@ export default {
     }
 };
 
-// HTML template with proper UTF-8 encoding
+// HTML template
 function getHTML() {
     return `<!DOCTYPE html>
 <html lang="zh-CN">
@@ -237,12 +237,7 @@ function getHTML() {
         async function initDatabase() {
             try {
                 showMessage('正在初始化数据库...', 'info');
-                const response = await fetch(BASE_URL + '/api/init-db', { 
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
+                const response = await fetch(BASE_URL + '/api/init-db', { method: 'POST' });
                 const data = await response.json();
                 if (data.success) {
                     showMessage('✅ ' + data.message, 'success');
