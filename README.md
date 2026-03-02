@@ -12,7 +12,7 @@
 - 创建一键部署脚本和完整文档
 
 ### 🌐 在线访问
-- **生产环境**: https://taobao-d1-807504.ywqih1206979-06f.workers.dev
+- **生产环境**: [https://taobao-d1-807504.ywqih1206979-06f.workers.dev](https://xiteral128.github.io/web-learning/)
 - **API健康检查**: https://taobao-d1-807504.ywqih1206979-06f.workers.dev/api/health
 - **商品API**: https://taobao-d1-807504.ywqih1206979-06f.workers.dev/api/products
 
