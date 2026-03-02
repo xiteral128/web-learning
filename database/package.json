@@ -1,0 +1,19 @@
+{
+  "name": "taobao-database",
+  "version": "1.0.0",
+  "description": "淘宝商城数据库模块",
+  "main": "db.js",
+  "scripts": {
+    "init": "node init.js init",
+    "reset": "node init.js reset",
+    "status": "node init.js status",
+    "test": "node db.js test",
+    "backup": "node db.js backup"
+  },
+  "keywords": ["database", "sqlite", "taobao"],
+  "author": "OpenClaw AI Assistant",
+  "license": "MIT",
+  "dependencies": {
+    "sqlite3": "^5.1.6"
+  }
+}
