@@ -5,10 +5,16 @@
 ## 🚀 项目状态
 
 **✅ 最新更新：2026-03-02**
+- 🎉 **已成功部署到Cloudflare Workers + D1数据库**
 - 添加完整的后端数据库系统（10个表）
 - 实现RESTful API服务（50+端点）
 - 提供Cloudflare Workers全栈部署方案
 - 创建一键部署脚本和完整文档
+
+### 🌐 在线访问
+- **生产环境**: https://taobao-d1-807504.ywqih1206979-06f.workers.dev
+- **API健康检查**: https://taobao-d1-807504.ywqih1206979-06f.workers.dev/api/health
+- **商品API**: https://taobao-d1-807504.ywqih1206979-06f.workers.dev/api/products
 
 ## 📁 项目结构
 
@@ -181,6 +187,7 @@ cd database && npm run test
 - [x] Cloudflare部署方案
 - [x] 完整文档和指南
 - [x] 自动化测试工具
+- [x] 🎉 **生产环境部署** (Cloudflare Workers + D1 Database)
 
 ### 进行中 🔄
 - [ ] 前端与API集成
@@ -194,6 +201,7 @@ cd database && npm run test
 - **徐佳豪** - 网站发布和后端搭建
 - **许太杰** - 实验报告撰写
 - **OpenClaw AI助手** - 后端系统设计和部署方案
+- **Cloudflare** - 提供免费的Workers和D1数据库服务
 
 ## 📞 联系和支持
 
@@ -213,6 +221,25 @@ cd database && npm run test
 
 感谢所有贡献者和用户的支持，特别感谢Cloudflare提供的免费部署平台。
 
+## 📋 部署日志
+
+详细的部署过程和技术细节请查看：
+- [部署日志](DEPLOYMENT_LOG.md) - 完整的部署记录和测试结果
+- [D1数据库部署指南](cloudflare-d1-deploy/README.md) - 一键部署说明
+
+## 🎯 立即体验
+
+### 在线演示
+1. 访问: https://taobao-d1-807504.ywqih1206979-06f.workers.dev
+2. 查看API文档和功能演示
+3. 测试商品列表和分类功能
+
+### 测试账号
+- 用户名: `testuser`
+- 密码: `123456`
+
 ---
 **最后更新：2026-03-02**
-**版本：v2.0.0** - 添加完整后端系统和部署方案
+**版本：v3.0.0** - 成功部署到Cloudflare生产环境
+**部署状态**: 🟢 运行正常
+**访问地址**: https://taobao-d1-807504.ywqih1206979-06f.workers.dev

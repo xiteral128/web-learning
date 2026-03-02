@@ -1,0 +1,16 @@
+name = "taobao-d1-807504"
+main = "worker.js"
+compatibility_date = "2025-12-23"
+workers_dev = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "taobao-d1-db"
+database_id = ""
+
+[vars]
+ENVIRONMENT = "production"
+VERSION = "1.0.0"
+
+[build]
+command = "echo 'Building with D1...'"
